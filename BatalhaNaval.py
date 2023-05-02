@@ -32,31 +32,6 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 
 # Preenche Frota - 
 
-def preenche_frota(frota,nome_navio,linha,coluna,orientacao,tamanho):
-    posicao = []
-    i = 0
-    if frota == {} or nome_navio not in frota:
-        if orientacao == 'horizontal':
-            while i < tamanho:
-                posicao.append([linha,coluna+i])
-                i += 1
-        elif orientacao == 'vertical':
-            while i < tamanho:
-                posicao.append([linha+i,coluna])
-                i += 1
-        frota[nome_navio] = ([posicao])
-    else:
-        if orientacao == 'horizontal':
-            while i < tamanho:
-                posicao.append([linha,coluna+i])
-                i += 1
-        elif orientacao == 'vertical':
-            while i < tamanho:
-                posicao.append([linha+i,coluna])
-                i += 1
-        frota[nome_navio].append(posicao)
-    return frota
-    
 
 
 # Faz Jogada - 
@@ -69,6 +44,17 @@ def faz_jogada(tabuleiro, linha, coluna):
 
     return tabuleiro
 
+# Posiciona Frota 
+
+# Quantas embarcações afundadas?
+
+# Posição Válida
+
+# Posicionando Frota
+
+# Jogadas do jogador
+
+# Jogadas do Oponente
 
 
 
