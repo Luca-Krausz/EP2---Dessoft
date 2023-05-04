@@ -71,6 +71,25 @@ def faz_jogada(tabuleiro, linha, coluna):
 
 # Posiciona Frota 
 
+def posiciona_frota(frota):
+    tabuleiro = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
+    for chave in frota:
+        for valor in frota[chave]:
+            for posicao in valor:
+                tabuleiro[posicao[0]][posicao[1]] = 1
+    return tabuleiro
+
 # Quantas embarcações afundadas?
 
 def afundados(frota, tabuleiro):
@@ -89,6 +108,8 @@ def afundados(frota, tabuleiro):
   return N_Afundados
 
 # Posição Válida
+
+
 
 # Posicionando Frota
 
