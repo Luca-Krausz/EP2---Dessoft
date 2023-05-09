@@ -130,22 +130,40 @@ def posicao_valida(frota,linha,coluna,orientacao,tamanho):
 # Posicionando Frota
 
 lista_navios = {'porta-aviões': [4, 1], 'navio-tanque': [3, 2], 'contratorpedeiro': [2, 3], 'submarino': [1, 4]} # Dicio > Nome: [Tamanho, Quantidade]
-#valido = posicao_valida(frota, linha, coluna, orientacao, tamanho)
 dicio_navios = {}
 
 for navio, info in lista_navios.items():
+    tamanho = info[0]
+    quant = info[1]
     print(f'Insira as informações referentes ao navio {navio} que possui tamanho {info[0]}')
-    linha = input('Linha: ')
-    coluna = input('Coluna: ')
-    if navio != 'submarino':
-        orientacao = input('[1] Vertical [2] Horizontal > ')
-        if orientacao == '1':
-            orientacao == 'vertical'
-        elif orientacao == '2':
-            orientacao == 'horizontal'
+    for i in range(0, quant):
+        linha = input('Linha: ')
+        coluna = input('Coluna: ')
+        if navio != 'submarino':
+            orientacao = input('[1] Vertical [2] Horizontal > ')
+            if orientacao == '1':
+                orientacao == 'vertical'
+            elif orientacao == '2':
+                orientacao == 'horizontal'
 
-    dicio_navios = preenche_frota(dicio_navios, navio, linha, coluna, orientacao, info[0])
-    posicao = define_posicoes(linha, coluna, orientacao, info[0])
+            valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
+            if valido == True:
+                dicio_navios = preenche_frota(dicio_navios,navio,linha,coluna,orientacao,tamanho)
+                posicao = define_posicoes(linha, coluna, orientacao, tamanho)
+            else:
+                while valido != True:
+                    print('Esta posição não está válida!')
+                    linha = input('Linha: ')
+                    coluna = input('Coluna: ')
+                    if navio != 'submarino':
+                        orientacao = input('[1] Vertical [2] Horizontal > ')
+                        if orientacao == '1':
+                            orientacao == 'vertical'
+                        elif orientacao == '2':
+                            orientacao == 'horizontal'
+                    valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
+
+
 
 # Jogadas do jogador
 
