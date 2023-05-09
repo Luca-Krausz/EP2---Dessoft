@@ -117,9 +117,9 @@ def posicao_valida(frota,linha,coluna,orientacao,tamanho):
         for navio, lista in frota.items():
             for pos in lista:
                 for n in pos:
-                    if n[1] == x:
+                    if n[0] == x:
                         return False
-                    if n[2] == y:
+                    if n[1] == y:
                         return False
     return True
 
