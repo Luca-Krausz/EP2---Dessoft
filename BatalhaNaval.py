@@ -145,25 +145,24 @@ for navio, info in lista_navios.items():
                 orientacao == 'vertical'
             elif orientacao == '2':
                 orientacao == 'horizontal'
+        
+        valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
+        
+        if valido == True:
+            dicio_navios = preenche_frota(dicio_navios,navio,linha,coluna,orientacao,tamanho)
+            posicao = define_posicoes(linha, coluna, orientacao, tamanho)
         else:
-            continue
-
-            valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
-            if valido == True:
-                dicio_navios = preenche_frota(dicio_navios,navio,linha,coluna,orientacao,tamanho)
-                posicao = define_posicoes(linha, coluna, orientacao, tamanho)
-            else:
-                while valido != True:
-                    print('Esta posição não está válida!')
-                    linha = input('Linha: ')
-                    coluna = input('Coluna: ')
-                    if navio != 'submarino':
-                        orientacao = input('[1] Vertical [2] Horizontal > ')
-                        if orientacao == '1':
-                            orientacao == 'vertical'
-                        elif orientacao == '2':
-                            orientacao == 'horizontal'
-                    valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
+            while valido != True:
+                print('Esta posição não está válida!')
+                linha = input('Linha: ')
+                coluna = input('Coluna: ')
+                if navio != 'submarino':
+                    orientacao = input('[1] Vertical [2] Horizontal > ')
+                    if orientacao == '1':
+                        orientacao == 'vertical'
+                    elif orientacao == '2':
+                        orientacao == 'horizontal'
+                valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
 
 
 
