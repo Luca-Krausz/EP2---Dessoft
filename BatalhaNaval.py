@@ -110,18 +110,22 @@ def afundados(frota, tabuleiro):
 # Posição Válida
 
 def posicao_valida(frota,linha,coluna,orientacao,tamanho):
+    posicoes_preenchidas = []
     position = define_posicoes(linha, coluna, orientacao, tamanho)
     for w in position:
         x = w[0]
         y = w[1]
+        if x < 0 or x > 9 or y < 0 or y > 9:
+            return False
         for navio, lista in frota.items():
             for pos in lista:
                 for n in pos:
-                    if n[0] == x:
+                    posicoes_preenchidas.append(n)
+                    if n[0] == x and  n[1] == y:
                         return False
-                    if n[1] == y:
-                        return False
+
     return True
+
 
 
 # Posicionando Frota
