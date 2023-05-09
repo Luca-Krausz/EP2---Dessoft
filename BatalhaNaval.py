@@ -144,8 +144,8 @@ for navio, info in lista_navios.items():
         elif orientacao == '2':
             orientacao == 'horizontal'
 
-    
     dicio_navios = preenche_frota(dicio_navios, navio, linha, coluna, orientacao, info[0])
+    posicao = define_posicoes(linha, coluna, orientacao, info[0])
 
 # Jogadas do jogador
 
