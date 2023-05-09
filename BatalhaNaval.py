@@ -135,8 +135,8 @@ dicio_navios = {}
 for navio, info in lista_navios.items():
     tamanho = info[0]
     quant = info[1]
-    print(f'Insira as informações referentes ao navio {navio} que possui tamanho {info[0]}')
     for i in range(0, quant):
+        print(f'Insira as informações referentes ao navio {navio} que possui tamanho {info[0]}')
         linha = input('Linha: ')
         coluna = input('Coluna: ')
         if navio != 'submarino':
@@ -145,6 +145,8 @@ for navio, info in lista_navios.items():
                 orientacao == 'vertical'
             elif orientacao == '2':
                 orientacao == 'horizontal'
+        else:
+            continue
 
             valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
             if valido == True:
