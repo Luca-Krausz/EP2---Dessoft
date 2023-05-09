@@ -123,7 +123,6 @@ def posicao_valida(frota,linha,coluna,orientacao,tamanho):
                     posicoes_preenchidas.append(n)
                     if n[0] == x and  n[1] == y:
                         return False
-
     return True
 
 
