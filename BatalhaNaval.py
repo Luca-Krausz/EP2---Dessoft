@@ -150,7 +150,7 @@ for navio, info in lista_navios.items():
             elif orientacao == '2':
                 orientacao ='horizontal'
         else:
-            orientacao = 'horizontal'
+            orientacao = 'vertical'
         
         valido = posicao_valida(dicio_navios, linha, coluna, orientacao, tamanho)
         
@@ -170,8 +170,12 @@ for navio, info in lista_navios.items():
                     elif orientacao == '2':
                         orientacao = 'horizontal'
                 else:
-                    orientacao = 'horizontal'
+                    orientacao = 'vertical'
                 valido = posicao_valida(dicio_navios, linha, coluna, orientacao, tamanho)
+
+                if valido == True:
+                    dicio_navios = preenche_frota(dicio_navios,navio,linha,coluna,orientacao,tamanho)
+                    posicao = define_posicoes(linha, coluna, orientacao, tamanho)
 print(dicio_navios)
 
 
