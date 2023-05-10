@@ -142,9 +142,9 @@ for navio, info in lista_navios.items():
         if navio != 'submarino':
             orientacao = input('[1] Vertical [2] Horizontal > ')
             if orientacao == '1':
-                orientacao == 'vertical'
+                orientacao = 'vertical'
             elif orientacao == '2':
-                orientacao == 'horizontal'
+                orientacao ='horizontal'
         
         valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
         
@@ -160,9 +160,9 @@ for navio, info in lista_navios.items():
                 if navio != 'submarino':
                     orientacao = input('[1] Vertical [2] Horizontal > ')
                     if orientacao == '1':
-                        orientacao == 'vertical'
+                        orientacao = 'vertical'
                     elif orientacao == '2':
-                        orientacao == 'horizontal'
+                        orientacao = 'horizontal'
                 valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
 
 
