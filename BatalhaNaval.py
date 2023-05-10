@@ -154,6 +154,7 @@ for navio, info in lista_navios.items():
         else:
             while valido != True:
                 print('Esta posição não está válida!')
+                print(navio, tamanho)
                 linha = input('Linha: ')
                 coluna = input('Coluna: ')
                 if navio != 'submarino':
