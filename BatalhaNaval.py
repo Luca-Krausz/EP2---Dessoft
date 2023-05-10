@@ -34,31 +34,31 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 
 # Preenche Frota - 
 
-def preenche_frota(frota,nome_navio,linha,coluna,orientacao,tamanho):
+def preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho):
     posicao = []
     i = 0
     if frota == {} or nome_navio not in frota:
         if orientacao == 'horizontal':
             while i < tamanho:
                 J = int(coluna) + i
-                posicao.append([str(linha),str(J)])
+                posicao.append([int(linha),int(J)])
                 i += 1
         elif orientacao == 'vertical':
             while i < tamanho:
                 J = int(linha) + i
-                posicao.append([str(J),str(coluna)])
+                posicao.append([int(J),int(coluna)])
                 i += 1
         frota[nome_navio] = ([posicao])
     else:
         if orientacao == 'horizontal':
             while i < tamanho:
                 J = int(coluna) + int(i)
-                posicao.append([str(linha), str(J)])
+                posicao.append([int(linha), int(J)])
                 i += 1
         elif orientacao == 'vertical':
             while i < tamanho:
                 J = int(linha)+int(i)
-                posicao.append([str(J), str(coluna)])
+                posicao.append([int(J), int(coluna)])
                 i += 1
         frota[nome_navio].append(posicao)
     return frota
@@ -160,7 +160,7 @@ for navio, info in lista_navios.items():
         else:
             while valido != True:
                 print('Esta posição não está válida!')
-                print(navio, tamanho)
+                print(f'Insira as informações referentes ao navio {navio} que possui tamanho {info[0]}')
                 linha = input('Linha: ')
                 coluna = input('Coluna: ')
                 if navio != 'submarino':
@@ -169,7 +169,7 @@ for navio, info in lista_navios.items():
                         orientacao = 'vertical'
                     elif orientacao == '2':
                         orientacao = 'horizontal'
-                valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
+                valido = posicao_valida(dicio_navios, linha, coluna, orientacao, tamanho)
 print(dicio_navios)
 
 
