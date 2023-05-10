@@ -21,14 +21,14 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     #Se orientação for 'horizontal', linha irá se manter constante
 
     if orientacao == 'vertical':
-        V = int(linha)+int(coluna)
+        V = int(linha) + tamanho
         for L in range(int(linha),int(V)):
-            posicao.append([L,coluna])
+            posicao.append([str(L), str(coluna)])
 
     elif orientacao == 'horizontal':
-        H = int(coluna)+int(tamanho[0])
+        H = int(coluna) + tamanho
         for c in range(int(coluna),int(H)):
-            posicao.append([linha, c])
+            posicao.append([str(linha), str(c)])
 
     return posicao
 
@@ -40,21 +40,25 @@ def preenche_frota(frota,nome_navio,linha,coluna,orientacao,tamanho):
     if frota == {} or nome_navio not in frota:
         if orientacao == 'horizontal':
             while i < tamanho:
-                posicao.append([int(linha),int(coluna)+i])
+                J = int(coluna) + i
+                posicao.append([str(linha),str(J)])
                 i += 1
         elif orientacao == 'vertical':
             while i < tamanho:
-                posicao.append([linha+i,coluna])
+                J = int(linha) + i
+                posicao.append([str(J),str(coluna)])
                 i += 1
         frota[nome_navio] = ([posicao])
     else:
         if orientacao == 'horizontal':
             while i < tamanho:
-                posicao.append([linha,coluna+i])
+                J = int(coluna) + int(i)
+                posicao.append([str(linha), str(J)])
                 i += 1
         elif orientacao == 'vertical':
             while i < tamanho:
-                posicao.append([linha+i,coluna])
+                J = int(linha)+int(i)
+                posicao.append([str(J), str(coluna)])
                 i += 1
         frota[nome_navio].append(posicao)
     return frota
@@ -111,7 +115,7 @@ def afundados(frota, tabuleiro):
 
 # Posição Válida
 
-def posicao_valida(frota,linha,coluna,orientacao,tamanho):
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     posicoes_preenchidas = []
     position = define_posicoes(linha, coluna, orientacao, tamanho)
     for w in position:
@@ -148,7 +152,7 @@ for navio, info in lista_navios.items():
             elif orientacao == '2':
                 orientacao ='horizontal'
         
-        valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
+        valido = posicao_valida(dicio_navios, linha, coluna, orientacao, tamanho)
         
         if valido == True:
             dicio_navios = preenche_frota(dicio_navios,navio,linha,coluna,orientacao,tamanho)
@@ -166,7 +170,7 @@ for navio, info in lista_navios.items():
                     elif orientacao == '2':
                         orientacao = 'horizontal'
                 valido = posicao_valida(dicio_navios, linha, coluna, orientacao, info)
-
+print(dicio_navios)
 
 
 # Jogadas do jogador
