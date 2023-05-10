@@ -21,14 +21,12 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     #Se orientação for 'horizontal', linha irá se manter constante
 
     if orientacao == 'vertical':
-        V = int(linha) + tamanho
-        for L in range(int(linha),int(V)):
-            posicao.append([str(L), str(coluna)])
+        for L in range(linha,linha+tamanho):
+            posicao.append([L,coluna])
 
     elif orientacao == 'horizontal':
-        H = int(coluna) + tamanho
-        for c in range(int(coluna),int(H)):
-            posicao.append([str(linha), str(c)])
+        for c in range(coluna,coluna+tamanho):
+            posicao.append([linha, c])
 
     return posicao
 
@@ -119,8 +117,8 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
     posicoes_preenchidas = []
     position = define_posicoes(linha, coluna, orientacao, tamanho)
     for w in position:
-        x = int(w[0])
-        y = int(w[1])
+        x = w[0]
+        y = w[1]
         if x < 0 or x > 9 or y < 0 or y > 9:
             return False
         for navio, lista in frota.items():
@@ -143,14 +141,16 @@ for navio, info in lista_navios.items():
     quant = info[1]
     for i in range(0, quant):
         print(f'Insira as informações referentes ao navio {navio} que possui tamanho {info[0]}')
-        linha = input('Linha: ')
-        coluna = input('Coluna: ')
+        linha = int(input('Linha: '))
+        coluna = int(input('Coluna: '))
         if navio != 'submarino':
             orientacao = input('[1] Vertical [2] Horizontal > ')
             if orientacao == '1':
                 orientacao = 'vertical'
             elif orientacao == '2':
                 orientacao ='horizontal'
+        else:
+            orientacao = 'horizontal'
         
         valido = posicao_valida(dicio_navios, linha, coluna, orientacao, tamanho)
         
@@ -161,14 +161,16 @@ for navio, info in lista_navios.items():
             while valido != True:
                 print('Esta posição não está válida!')
                 print(f'Insira as informações referentes ao navio {navio} que possui tamanho {info[0]}')
-                linha = input('Linha: ')
-                coluna = input('Coluna: ')
+                linha = int(input('Linha: '))
+                coluna = int(input('Coluna: '))
                 if navio != 'submarino':
                     orientacao = input('[1] Vertical [2] Horizontal > ')
                     if orientacao == '1':
                         orientacao = 'vertical'
                     elif orientacao == '2':
                         orientacao = 'horizontal'
+                else:
+                    orientacao = 'horizontal'
                 valido = posicao_valida(dicio_navios, linha, coluna, orientacao, tamanho)
 print(dicio_navios)
 
